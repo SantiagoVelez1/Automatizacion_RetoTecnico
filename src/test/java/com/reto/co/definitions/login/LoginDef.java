@@ -13,30 +13,32 @@ import org.junit.Assert;
 public class LoginDef {
 
     @Steps(shared = true)
-    WebSite url;
+    WebSite url; // Inyeccion de dependencia para la clase que maneja la navegacion web
 
     @Steps(shared = true)
-    LoginStep login;
+    LoginStep login; // Inyeccion de dependencia para la clase que contiene los pasos de login
 
     @Steps(shared = true)
-    ValidationStep validate;
+    ValidationStep validate; // Inyeccion de dependencia para la clase que contiene los pasos de validacion
 
     @Given("El usuario navega en el sitio web")
-    public void userNavegateTo(){
-        url.navegateTo( "https://www.demoblaze.com/index.html");
+    public void userNavegateTo() {
+        // Metodo que navega hacia la URL especifica del sitio web
+        url.navegateTo("https://www.demoblaze.com/index.html");
     }
 
     @When("El usuario ingresa credenciales validas")
-    public void userLogin(){
-
-        login.clickLog();
-        login.typeUsername("santiago_pruebas");
-        login.typePassword("12345678");
-        login.clickLogin();
+    public void userLogin() {
+        // Metodo que ejecuta los pasos para iniciar sesion con credenciales validas
+        login.clickLog(); // Clic en el boton de inicio de sesion
+        login.typeUsername("santiago_pruebas"); // Ingresar el nombre de usuario
+        login.typePassword("12345678"); // Ingresar la contrasena
+        login.clickLogin(); // Hacer clic en el boton de iniciar sesion
     }
 
-    @Then("La apliacion debera mostrar el home del aplicativo con el usuario logeado")
-    public void ValidationNick(){
-        Assert.assertTrue(validate.nickIsVisible());
+    @Then("La aplicacion debera mostrar el home del aplicativo con el usuario logeado")
+    public void ValidationNick() {
+        // Metodo que realiza una validacion para asegurar que el nombre de usuario esta visible en el home del aplicativo
+        Assert.assertTrue(validate.nickIsVisible()); // Verificar que el nombre de usuario esta visible
     }
 }

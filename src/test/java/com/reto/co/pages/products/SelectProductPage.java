@@ -10,14 +10,34 @@ import java.util.List;
 
 public class SelectProductPage extends PageObject {
 
-    @FindBy(xpath = "") // Selector de tipo clase de todos los productos
-    protected List<WebElementFacade> products;
+    public WebElement getCategoria(String categoria) {
+        return find(By.xpath("//a[@id='itemc' and contains(., '" + categoria + "')]"));
+    }
+
+    public WebElement getProducto(String producto) {
+        return find(By.xpath("//a[@class='hrefch' and contains(text(), '" + producto + "')]"));
+    }
 
     @FindBy(xpath = "//button[contains(text(),'Place Order')]") // Boton Place Order
     protected WebElementFacade btn_placeOrder;
 
     @FindBy(id = "name") // Selector del campo name
     protected WebElementFacade txt_name;
+    @FindBy(id = "country") // Selector del campo country
+    protected WebElementFacade txt_country;
+    @FindBy(id = "city") // Selector del campo city
+    protected WebElementFacade txt_city;
+    @FindBy(id = "card") // Selector del campo tarjeta
+    protected WebElementFacade txt_creditCard;
+
+    @FindBy(id = "month") // Selector del campo month
+    protected WebElementFacade txt_month;
+
+    @FindBy(id = "year") // Selector del campo year
+    protected WebElementFacade txt_year;
+
+    @FindBy(xpath = "//button[contains(text(),'Purchase')]")
+    protected WebElementFacade btn_Purchase;
 
     @FindBy(id = "cartur") // Selector de la opcion Cart
     protected WebElementFacade btn_cart;
@@ -28,11 +48,4 @@ public class SelectProductPage extends PageObject {
     @FindBy(xpath = "//a[@class='nav-link']")
     protected WebElementFacade btn_home;
 
-    public WebElement getCategoria(String categoria){
-        return find(By.xpath("//a[@id='itemc' and contains((., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'"+categoria+"')]"));
-    }
-
-    public WebElement getProdcuto(String producto){
-        return find(By.xpath("//a[@id='itemc' and contains((., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'"+producto+"')]"));
-    }
 }

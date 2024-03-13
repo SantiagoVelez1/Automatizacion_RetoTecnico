@@ -5,13 +5,39 @@ import net.serenitybdd.annotations.Step;
 
 public class SelectProductStep extends SelectProductPage {
 
-    @Step("Click en la opcion de Cart")
-    public void  click_btnCart(){
-
-        btn_cart.click();
-    }
-    public void ClickCategoria(String cat){
-        getCategoria(cat).click();
+    @Step("Seleccionamos categoria") // Paso para seleccionar una categoría
+    public void seleccionarCategoria(String categoria) {
+        getCategoria(categoria).click(); // Se hace clic en la categoría especificada
     }
 
+    @Step("Seleccionamos el producto") // Paso para seleccionar un producto
+    public void seleccionarProducto(String producto) {
+        getProducto(producto).click(); // Se hace clic en el producto especificado
+    }
+
+    @Step("Añadir producto al carrito") // Paso para añadir un producto al carrito
+    public void anadirProductoAlCarrito() {
+        btn_addToCar.click(); // Se hace clic en el botón para añadir al carrito
+    }
+
+    @Step("Click en boton Place Order") // Paso para hacer clic en el botón "Place Order"
+    public void clickBtnOrder() {
+        btn_placeOrder.click(); // Se hace clic en el botón "Place Order"
+    }
+
+    @Step("Llenar los datos de compra") // Paso para llenar los datos de compra
+    public void llenarDatosDeVenta(String name, String country, String city, String card, String month, String year) {
+        txt_name.sendKeys(name); // Se ingresa el nombre
+        txt_country.sendKeys(country); // Se ingresa el país
+        txt_city.sendKeys(city); // Se ingresa la ciudad
+        txt_creditCard.sendKeys(card); // Se ingresa el número de tarjeta
+        txt_month.sendKeys(month); // Se ingresa el mes de vencimiento
+        txt_year.sendKeys(year); // Se ingresa el año de vencimiento
+        btn_Purchase.click(); // Se hace clic en el botón "Purchase"
+    }
+
+    @Step("Click en la opcion de Cart") // Paso para hacer clic en la opción "Cart"
+    public void click_btnCart() {
+        btn_cart.click(); // Se hace clic en la opción "Cart"
+    }
 }
