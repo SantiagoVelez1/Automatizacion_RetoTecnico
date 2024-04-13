@@ -27,7 +27,7 @@ public class LoginDef {
         url.navegateTo("https://www.demoblaze.com/index.html");
     }
 
-    @When("El usuario ingresa credenciales validas")
+    @When("El usuario ingresa credenciales validas en la opcion Login")
     public void userLogin() {
         // Metodo que ejecuta los pasos para iniciar sesion con credenciales validas
         login.clickLog(); // Clic en el boton de inicio de sesion

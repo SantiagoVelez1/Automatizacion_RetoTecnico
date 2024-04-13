@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com.reto.co.definitions",
-        tags = "@ShoppingCartList"
+        tags = "@Suite"
 
 )
 public class Runner {

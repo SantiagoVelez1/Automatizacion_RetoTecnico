@@ -2,6 +2,7 @@ package com.reto.co.definitions.shopping;
 
 import com.reto.co.steps.products.SelectProductStep;
 import com.reto.co.steps.validations.ValidationStep;
+import com.reto.co.utilities.Funciones.MetodosRandom;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,6 +17,8 @@ public class ShoppingDef {
     @Steps(shared = true)
     ValidationStep validate; // Se importa el Step correspondiente para realizar validaciones
 
+    @Steps(shared = true)
+    MetodosRandom random;
 
     @And("el usuario selecciona la categoria {string}") // Step para seleccionar una categoría
     public void elUsuarioSeleccionaLaCategoria(String categoria) {
@@ -43,7 +46,13 @@ public class ShoppingDef {
     @When("realiza el usuario realiza el proceso de compra completo")
     // Step para realizar el proceso completo de compra
     public void iniciaCompraDeProducto() {
-        selectProduct.llenarDatosDeVenta("Santiago", "Colombia", "Medellin", "5000200030004000200", "12", "2024"); // Se llenan los datos de la venta
+        String name = MetodosRandom.generateRandomName();
+        String country = MetodosRandom.generateRandomCountry();
+        String city = MetodosRandom.generateRandomCity();
+        String card = MetodosRandom.generateRandomCreditCardNumber();
+        String month = String.valueOf(MetodosRandom.generateRandomMonth());
+        String year = String.valueOf(MetodosRandom.generateRandomYear());
+        selectProduct.llenarDatosDeVenta(name, country, city, card, month, year);
     }
 
     @Then("El sistema debera procesar la compra") // Step para validar que la compra haya sido procesada correctamente
