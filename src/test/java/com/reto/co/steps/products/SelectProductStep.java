@@ -2,17 +2,40 @@ package com.reto.co.steps.products;
 
 import com.reto.co.pages.products.SelectProductPage;
 import net.serenitybdd.annotations.Step;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class SelectProductStep extends SelectProductPage {
 
-    @Step("Seleccionamos categoria") // Paso para seleccionar una categoría
+    private WebDriver driver;
+
+    @Step("Seleccionamos categoria")
     public void seleccionarCategoria(String categoria) {
-        getCategoria(categoria).click(); // Se hace clic en la categoría especificada
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement categoriaElement = wait.until(ExpectedConditions.visibilityOf(getCategoria(categoria)));
+
+        try {
+            categoriaElement.click();
+        } catch (StaleElementReferenceException e) {
+            // Manejar la excepción de manera adecuada, por ejemplo, intentar nuevamente
+            categoriaElement = wait.until(ExpectedConditions.visibilityOf(getCategoria(categoria)));
+            categoriaElement.click();
+        }
     }
 
-    @Step("Seleccionamos el producto") // Paso para seleccionar un producto
+    @Step("Seleccionamos el producto")
     public void seleccionarProducto(String producto) {
-        getProducto(producto).click(); // Se hace clic en el producto especificado
+        try {
+            getProducto(producto).click();
+        } catch (StaleElementReferenceException e) {
+            // Manejar la excepción de manera adecuada, por ejemplo, intentar nuevamente
+            getProducto(producto).click();
+        }
     }
 
     @Step("Añadir producto al carrito") // Paso para añadir un producto al carrito

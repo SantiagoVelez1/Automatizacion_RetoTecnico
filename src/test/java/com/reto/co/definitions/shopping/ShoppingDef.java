@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
 import org.junit.Assert;
 
+
 public class ShoppingDef {
     @Steps(shared = true)
     SelectProductStep selectProduct; // Se importa el Step correspondiente para interactuar con la página de productos
@@ -15,12 +16,13 @@ public class ShoppingDef {
     @Steps(shared = true)
     ValidationStep validate; // Se importa el Step correspondiente para realizar validaciones
 
-    @When("el usuario selecciona la categoria {string}") // Step para seleccionar una categoría
+
+    @And("el usuario selecciona la categoria {string}") // Step para seleccionar una categoría
     public void elUsuarioSeleccionaLaCategoria(String categoria) {
         selectProduct.seleccionarCategoria(categoria);
     }
 
-    @When("el usuario selecciona el producto {string}") // Step para seleccionar un producto
+    @And("el usuario selecciona el producto {string}") // Step para seleccionar un producto
     public void elUsuarioSeleccionaElProducto(String producto) {
         selectProduct.seleccionarProducto(producto);
     }
@@ -38,7 +40,7 @@ public class ShoppingDef {
         selectProduct.click_btnCart();
     }
 
-    @When("realiza el usuario realiza ek proceso de compra completo")
+    @When("realiza el usuario realiza el proceso de compra completo")
     // Step para realizar el proceso completo de compra
     public void iniciaCompraDeProducto() {
         selectProduct.llenarDatosDeVenta("Santiago", "Colombia", "Medellin", "5000200030004000200", "12", "2024"); // Se llenan los datos de la venta

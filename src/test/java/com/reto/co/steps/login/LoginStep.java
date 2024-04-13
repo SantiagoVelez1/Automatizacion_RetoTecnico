@@ -16,7 +16,7 @@ public class LoginStep extends LoginPage {
     }
 
     public void clickLog() { // Método para hacer clic en el botón de registro
-        btn_singUp.click();
+        getBtn_Login.click();
     }
 
     public void clickLogin() { // Método para hacer clic en el botón de inicio de sesión

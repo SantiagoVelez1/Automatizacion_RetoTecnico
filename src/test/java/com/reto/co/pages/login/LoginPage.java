@@ -7,7 +7,11 @@ import net.serenitybdd.core.pages.WebElementFacade;
 public class LoginPage extends PageObject {
 
     @FindBy(id = "login2") //Selector del boton de login principal
+    protected WebElementFacade getBtn_Login;
+
+    @FindBy(id = "signin2") //Selector del boton de sing Up principal
     protected WebElementFacade btn_singUp;
+
 
     @FindBy(id = "loginusername") //Selector del campo username
     protected WebElementFacade txt_username;
