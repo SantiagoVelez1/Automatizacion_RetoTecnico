@@ -21,7 +21,7 @@ public class ShoppingDef {
     MetodosRandom random;
 
     @And("el usuario selecciona la categoria {string}") // Step para seleccionar una categoría
-    public void elUsuarioSeleccionaLaCategoria(String categoria) {
+    public void elUsuarioSeleccionaLaCategoria(String categoria) throws InterruptedException {
         selectProduct.seleccionarCategoria(categoria);
     }
 
@@ -45,7 +45,7 @@ public class ShoppingDef {
 
     @When("realiza el usuario realiza el proceso de compra completo")
     // Step para realizar el proceso completo de compra
-    public void iniciaCompraDeProducto() {
+    public void iniciaCompraDeProducto() throws InterruptedException {
         String name = MetodosRandom.generateRandomName();
         String country = MetodosRandom.generateRandomCountry();
         String city = MetodosRandom.generateRandomCity();
