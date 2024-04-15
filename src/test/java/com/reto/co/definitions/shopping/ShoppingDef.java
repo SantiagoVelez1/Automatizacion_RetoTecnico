@@ -17,9 +17,6 @@ public class ShoppingDef {
     @Steps(shared = true)
     ValidationStep validate; // Se importa el Step correspondiente para realizar validaciones
 
-    @Steps(shared = true)
-    MetodosRandom random;
-
     @And("el usuario selecciona la categoria {string}") // Step para seleccionar una categoría
     public void elUsuarioSeleccionaLaCategoria(String categoria) throws InterruptedException {
         selectProduct.seleccionarCategoria(categoria);

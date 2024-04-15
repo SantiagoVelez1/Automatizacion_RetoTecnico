@@ -1,6 +1,5 @@
 package com.reto.co.utilities.Funciones;
 
-import net.serenitybdd.annotations.Step;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
@@ -10,7 +9,6 @@ public class MetodosRandom {
     private static final Random random = new Random();
 
     // Método para generar un nombre aleatorio
-    @Step("Generar nombre random")
     public static String generateRandomName() {
         String[] names = {"John", "Alice", "Michael", "Emma", "James", "Olivia", "William", "Sophia"};
         return names[random.nextInt(names.length)];

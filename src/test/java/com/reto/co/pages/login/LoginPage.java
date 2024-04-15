@@ -19,10 +19,10 @@ public class LoginPage extends PageObject {
     @FindBy(id = "loginpassword") // Selector del campo password
     protected WebElementFacade txt_password;
 
-    @FindBy(id="sign-username")
+    @FindBy(id = "sign-username")
     protected WebElementFacade sing_txt_username;
 
-    @FindBy(id="sign-password")
+    @FindBy(id = "sign-password")
     protected WebElementFacade sing_txt_password;
     @FindBy(xpath = "//button[contains(text(),'Log in')]") // Selector del boton "log in"
     protected WebElementFacade btn_Login;

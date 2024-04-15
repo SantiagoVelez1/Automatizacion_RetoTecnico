@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 public class SelectProductStep extends SelectProductPage {
@@ -15,16 +16,15 @@ public class SelectProductStep extends SelectProductPage {
 
     @Step("Seleccionamos categoria")
     public void seleccionarCategoria(String categoria) throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         WebElement categoriaElement = wait.until(ExpectedConditions.visibilityOf(getCategoria(categoria)));
 
         try {
             categoriaElement.click();
         } catch (StaleElementReferenceException e) {
-            Thread.sleep(500);
-            // Manejar la excepción de manera adecuada, por ejemplo, intentar nuevamente
-            categoriaElement = wait.until(ExpectedConditions.visibilityOf(getCategoria(categoria)));
-            categoriaElement.click();
+            Thread.sleep(500); // Espera breve para manejar elementos obsoletos
+            categoriaElement = wait.until(ExpectedConditions.visibilityOf(getCategoria(categoria))); // Se obtiene de nuevo la referencia del elemento
+            categoriaElement.click(); // Se intenta hacer clic nuevamente
         }
     }
 
@@ -33,7 +33,6 @@ public class SelectProductStep extends SelectProductPage {
         try {
             getProducto(producto).click();
         } catch (StaleElementReferenceException e) {
-            // Manejar la excepción de manera adecuada, por ejemplo, intentar nuevamente
             getProducto(producto).click();
         }
     }

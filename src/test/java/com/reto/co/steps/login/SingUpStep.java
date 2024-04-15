@@ -18,7 +18,8 @@ public class SingUpStep extends LoginPage {
     public void clickBtnSing() { // Método para hacer clic en el botón de inicio de sesión
         btn_singUp.click();
     }
-    public void clickSingUp(){
+
+    public void clickSingUp() {
         getBtn_SingUp.click();
     }
 }

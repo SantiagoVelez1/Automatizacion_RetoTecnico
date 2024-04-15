@@ -4,8 +4,6 @@ import net.serenitybdd.annotations.Step;
 import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.core.pages.PageObject;
 
-import java.time.Duration;
-
 
 public class WebSite {
 
@@ -15,7 +13,7 @@ public class WebSite {
 
 
     @Step("Ingresar al sitio web")
-    public void navegateTo(String url){
+    public void navegateTo(String url) {
         swag.setDefaultBaseUrl(url);
         swag.open();
 
